@@ -16,16 +16,24 @@ class QLearn:
         '''
         
         # TODO: Implement loading Q values from pickle file.
-
-        print("Loaded file: {}".format(filename+".pickle"))
+        try:
+            with open(f'{os.getcwd()}/{filename}.pickle', 'rb') as file:
+                self.q = pickle.load(file)
+            print("Loaded file: {}".format(filename+".pickle"))
+        except:
+            print("Could not open")
 
     def saveQ(self, filename):
         '''
         Save the Q state-action values in a pickle file.
         '''
         # TODO: Implement saving Q values to pickle and CSV files.
-
-        print("Wrote to file: {}".format(filename+".pickle"))
+        try:
+            with open(f'{os.getcwd()}/{filename}.pickle', 'wb') as file:
+                pickle.dump(self.q, file)
+            print(f'Wrote to file: {os.getcwd()}/{filename}.pickle')
+        except:
+            print("Could not open")
 
     def getQ(self, state, action):
         '''

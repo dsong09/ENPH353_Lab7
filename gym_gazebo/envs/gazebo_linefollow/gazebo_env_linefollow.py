@@ -96,7 +96,7 @@ class Gazebo_Linefollow_Env(gazebo_env.GazeboEnv):
                 cy = int(M['m01'] / M['m00'])
         else:
             self.timeout += 1
-            if self.timeout >= 30:
+            if self.timeout >= 15:
                 done = True
 
         # split image in 10
@@ -160,7 +160,7 @@ class Gazebo_Linefollow_Env(gazebo_env.GazeboEnv):
             if action == 0:  # FORWARD
                 reward = 4
             elif action == 1:  # LEFT
-                reward = 2
+                reward = 3
             else:
                 reward = 2  # RIGHT
         else:

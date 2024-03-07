@@ -38,7 +38,7 @@ if __name__ == '__main__':
     qlearn = qlearn.QLearn(actions=range(env.action_space.n),
                            alpha=0.2, gamma=0.8, epsilon=0.9)
 
-    # qlearn.loadQ("QValues_A+")
+    qlearn.loadQ("QValues_A+")
 
     initial_epsilon = qlearn.epsilon
 
@@ -87,6 +87,8 @@ if __name__ == '__main__':
 
         if highest_reward < cumulated_reward:
                 highest_reward = cumulated_reward
+                qlearn.saveQ("QValues_A+")
+        # save state action values for high reward to start training from that point by
 
         if (x > 0) and (x % 5 == 0):
             qlearn.saveQ("QValues")
